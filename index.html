@@ -919,9 +919,10 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500, token: 'A5DC5OXJLB' },
     { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000, token: '4V00F08D6G' },
   ];
-  // desconto progressivo por quantidade de pouches (mesma tabela da oferta5)
+  // desconto progressivo por quantidade de pouches — mesmos totais que a Yampi calcula no checkout
+  // (a regra da Yampi é percentual e arredonda 2 pouches para R$ 299,99)
   const REGULAR_POUCH_CENTS = 16249;
-  const POUCH_TOTALS_CENTS = { 1: 16249, 2: 29998, 3: 37491, 4: 49988 };
+  const POUCH_TOTALS_CENTS = { 1: 16249, 2: 29999, 3: 37491, 4: 49988 };
   const EXTRA_POUCH_CENTS = 12497;
   const totalCents = (count) => {
     if (count <= 0) return 0;
@@ -1096,7 +1097,15 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     loading.hidden = false;
     // se a página não sair (rede lenta, bloqueio), libera para tentar de novo
     setTimeout(() => { loading.hidden = true; leaving = false; }, 15000);
-    requestAnimationFrame(() => requestAnimationFrame(() => { window.location.href = url.toString(); }));
+    // dois quadros para o carregamento aparecer antes da troca de página; o timeout cobre quadros pausados
+    let gone = false;
+    const leave = () => {
+      if (gone) return;
+      gone = true;
+      window.location.href = url.toString();
+    };
+    requestAnimationFrame(() => requestAnimationFrame(leave));
+    setTimeout(leave, 150);
   });
   // voltando da Yampi pelo botão voltar, o Safari restaura a página como estava: destrava a tela
   window.addEventListener('pageshow', (e) => {
