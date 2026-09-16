@@ -904,8 +904,9 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   // ---------- carrinho ----------
   // Link de compra da Yampi: /r/TOKEN:QUANTIDADE,TOKEN:QUANTIDADE (mesmos produtos da oferta5)
   const YAMPI_CHECKOUT_URL = 'https://seguro.minhadot.com/r/';
-  // TODO: cupom da Yampi que adiciona os 9 sachês + mousepad como brinde. Enquanto estiver vazio,
-  // o "Finalizar compra" só mostra o carregamento e não sai da página.
+  // TODO: cupom da Yampi do kit. Por enquanto os brindes vão no link como produtos (tokens em GIFTS).
+  // Sem cupom, o link manda SEMCUPOM: a Yampi guarda o cupom da sessão entre links /r/
+  // (inclusive o da oferta5, que adiciona um pouch grátis) e um código inexistente limpa esse cupom.
   const YAMPI_KIT_COUPON = '';
   const FLAVORS = {
     menta: { name: 'Menta', token: 'T7OSNI4X3Z' },
@@ -914,8 +915,9 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     melancia: { name: 'Melancia c/ Limão', token: 'R5F5MQP29R' },
   };
   const GIFTS = [
-    { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500 },
-    { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000 },
+    // tokens da Yampi (mesmos da oferta6): MOUSEPAD DOT (BRINDE1) e 9 SACHÊS MELANCIA (BRINDE5)
+    { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500, token: 'A5DC5OXJLB' },
+    { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000, token: '4V00F08D6G' },
   ];
   // desconto progressivo por quantidade de pouches (mesma tabela da oferta5)
   const REGULAR_POUCH_CENTS = 16249;
@@ -1081,19 +1083,17 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     if (leaving || !pouches.length) return;
     const quantities = new Map();
     pouches.forEach((key) => quantities.set(key, (quantities.get(key) || 0) + 1));
-    const items = [...quantities].map(([key, qty]) => `${FLAVORS[key].token}:${qty}`);
+    const items = [
+      ...[...quantities].map(([key, qty]) => `${FLAVORS[key].token}:${qty}`),
+      ...GIFTS.map((gift) => `${gift.token}:1`),
+    ];
     const url = new URL(YAMPI_CHECKOUT_URL + items.join(','));
-    if (YAMPI_KIT_COUPON) url.searchParams.set('promocode', YAMPI_KIT_COUPON);
+    url.searchParams.set('promocode', YAMPI_KIT_COUPON || 'SEMCUPOM');
     new URLSearchParams(window.location.search).forEach((value, key) => {
       if (key.startsWith('utm_')) url.searchParams.set(key, value);
     });
     leaving = true;
     loading.hidden = false;
-    if (!YAMPI_KIT_COUPON) { // protótipo: sem o cupom dos brindes ainda, não sai da página
-      console.info('[carrinho] checkout (cupom dos brindes pendente):', url.toString());
-      setTimeout(() => { loading.hidden = true; leaving = false; }, 1500);
-      return;
-    }
     // se a página não sair (rede lenta, bloqueio), libera para tentar de novo
     setTimeout(() => { loading.hidden = true; leaving = false; }, 15000);
     requestAnimationFrame(() => requestAnimationFrame(() => { window.location.href = url.toString(); }));
