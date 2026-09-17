@@ -219,8 +219,7 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .nutrition-close { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--dot-navy); border-radius: 10px; background: var(--dot-yellow); }
 .nutrition-close svg { width: 24px; height: 24px; transform: rotate(45deg); }
 .nutrition-image { width: 100%; height: auto; }
-.nutrition-enlarge { display: inline-block; margin-top: 16px; text-decoration: underline; text-underline-offset: 3px; }
-.nutrition-close:focus-visible, .nutrition-enlarge:focus-visible { outline: 2px solid var(--dot-blue); outline-offset: 3px; }
+.nutrition-close:focus-visible { outline: 2px solid var(--dot-blue); outline-offset: 3px; }
 html:has(.nutrition-dialog[open]) { overflow: hidden; }
 @media (max-width: 480px) { .nutrition-dialog { padding: 12px; } .nutrition-head h2 { font-size: 26px; } }
 
@@ -778,7 +777,6 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
     <button class="nutrition-close" type="button" aria-label="Fechar tabela nutricional" autofocus><svg aria-hidden="true"><use href="#ic-plus"/></svg></button>
   </div>
   <img class="nutrition-image" src="assets/marca/tabela-nutricional.webp" alt="Informação nutricional DOT: 25 porções por embalagem; porção de 3,2 g ou 1 sachê. Valores por sachê e por 6,4 g, com percentuais dos valores diários." width="747" height="589">
-  <a class="nutrition-enlarge" href="assets/marca/tabela-nutricional.webp" target="_blank" rel="noopener">Abrir imagem ampliada ↗</a>
 </dialog>
 
 <script>
