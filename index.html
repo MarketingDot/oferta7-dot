@@ -245,36 +245,25 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .offer-art img { width: 100%; aspect-ratio: 1400 / 600; object-fit: cover; }
 .offer .flv-check { background: var(--kb-pick); color: #1a1a1a; }
 
-/* 2. sabores — carrossel arrastável, foto ocupa 96% do card, nome sobre a foto */
-.flv-viewport { --flv-edge: 14px; position: relative; margin: 0 -12px; }
-.flv-viewport::before, .flv-viewport::after { content: ""; position: absolute; top: 0; bottom: 0; z-index: 3; width: var(--flv-edge); pointer-events: none; -webkit-backdrop-filter: blur(5px); backdrop-filter: blur(5px); }
-.flv-viewport::before { left: 0; -webkit-mask-image: linear-gradient(to right, #000 40%, transparent); mask-image: linear-gradient(to right, #000 40%, transparent); }
-.flv-viewport::after { right: 0; -webkit-mask-image: linear-gradient(to left, #000 40%, transparent); mask-image: linear-gradient(to left, #000 40%, transparent); }
-.flv-track { --flv-basis: 60%; --flv-gap: 12px; display: flex; gap: var(--flv-gap); padding: 8px 0 18px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; cursor: grab; }
-.flv-track::-webkit-scrollbar { display: none; }
-.flv-track.is-dragging { cursor: grabbing; }
-.flv { position: relative; display: block; flex: 0 0 var(--flv-basis); cursor: pointer; border: 1.5px solid var(--kb-line); border-radius: 16px; background: #fff; container-type: inline-size; transition: border-color .2s ease, box-shadow .2s ease, transform .25s ease; user-select: none; -webkit-user-select: none; }
+/* 2. sabores — grade 2x2, foto ocupa 96% do card, nome sobre a foto */
+.flv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 680px; margin: 0 auto; padding: 4px 0 8px; }
+.flv { position: relative; display: block; cursor: pointer; border: 1.5px solid var(--kb-line); border-radius: 16px; background: #fff; container-type: inline-size; transition: border-color .2s ease, box-shadow .2s ease, transform .25s ease; user-select: none; -webkit-user-select: none; }
 .flv input { position: absolute; opacity: 0; pointer-events: none; }
 .flv:hover { border-color: #cfc9bb; }
-.flv-track.has-pick .flv { transform: scale(.96); }
-.flv-track .flv.is-picked { border-color: var(--kb-pick); box-shadow: 0 4px 10px rgba(0, 0, 0, .14); transform: scale(1.03); }
+.flv-grid.has-pick .flv { transform: scale(.96); }
+.flv-grid .flv.is-picked { border-color: var(--kb-pick); box-shadow: 0 4px 10px rgba(0, 0, 0, .14); transform: scale(1.03); }
 .flv:has(input:focus-visible) { outline: 2px solid #1a1a1a; outline-offset: 3px; }
 .flv-art { position: relative; display: block; margin: calc(2cqw - 1.5px); overflow: hidden; border-radius: 12px; }
 .flv-art img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; pointer-events: none; }
-.flv-name { position: absolute; left: 8px; right: 8px; bottom: 6px; z-index: 1; color: #fff; font-size: 16px; line-height: 19px; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, .55), 0 0 10px rgba(0, 0, 0, .35); }
+.flv-name { position: absolute; left: 8px; right: 8px; bottom: 6px; z-index: 1; color: #fff; font-size: 14px; line-height: 17px; font-weight: 700; text-shadow: 0 1px 2px rgba(0, 0, 0, .55), 0 0 10px rgba(0, 0, 0, .35); }
 .flv-check { position: absolute; top: 5px; right: 5px; z-index: 2; display: flex; width: 20px; height: 20px; align-items: center; justify-content: center; border: 1.5px solid #fff; border-radius: 50%; background: rgba(255, 255, 255, .55); color: transparent; box-shadow: 0 1px 4px rgba(0, 0, 0, .25); transition: background-color .2s ease, color .2s ease; }
 .flv-check svg { width: 9px; height: 9px; }
 .flv.is-picked .flv-check { background: var(--kb-pick); color: #1a1a1a; }
-.flv-dots { display: flex; justify-content: center; gap: 2px; margin-top: -2px; }
-.flv-dot { display: flex; width: 20px; height: 20px; align-items: center; justify-content: center; background: none; cursor: pointer; }
-.flv-dot span { width: 8px; height: 8px; border-radius: 50%; background: #d8d2c4; transition: background-color .2s ease, transform .2s ease; }
-.flv-dot.is-active span { background: #1a1a1a; transform: scale(1.15); }
 
 /* 3. brindes */
 .kb-gifts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 680px; margin: 0 auto; padding-bottom: 4px; }
 .flv--static { cursor: default; }
 .flv--static.is-picked, .flv--static.is-picked:hover { border-color: var(--kb-pick); box-shadow: 0 4px 10px rgba(0, 0, 0, .14); }
-.kb-gifts .flv-name { font-size: 14px; line-height: 17px; }
 
 /* CTA */
 .kb-cta { margin-top: 20px; border-radius: 16px; background: #fff; padding: 20px 16px; text-align: center; }
@@ -292,18 +281,15 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 @media (min-width: 560px) {
   .kb { padding: 56px 24px 64px; }
   .kb-panel { padding: 28px 20px 20px; }
-  .flv-viewport { --flv-edge: 20px; margin: 0 -20px; }
-  .flv-track { --flv-basis: 46%; }
+  .flv-grid { gap: 16px; }
   .kb-gifts { gap: 16px; }
-  .kb-gifts .flv-name { font-size: 16px; line-height: 19px; }
+  .flv-name { font-size: 16px; line-height: 19px; }
 }
 @media (min-width: 768px) {
   .kb-title { margin-bottom: 32px; font-size: 44px; }
   .kb-head h3 { font-size: 22px; line-height: 28px; }
   .kb-head p { font-size: 16px; }
-  .flv-track { --flv-basis: 40%; --flv-gap: 16px; }
   .flv-name { left: 12px; right: 12px; bottom: 8px; font-size: 19px; line-height: 23px; }
-  .kb-gifts .flv-name { font-size: 19px; line-height: 23px; }
   .kb-cta { padding: 28px 24px; }
   .kb-total b { font-size: 52px; }
 }
@@ -312,8 +298,6 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
   .kb-step { display: grid; grid-template-columns: 96px 1fr; align-items: start; margin-top: 24px; }
   .kb-num { position: static; width: auto; height: auto; background: none; color: #fff; font-size: 132px; line-height: .8; letter-spacing: -.04em; justify-content: flex-start; }
   .kb-panel { padding: 32px 40px 36px; }
-  .flv-viewport { --flv-edge: 40px; margin: 0 -40px; }
-  .flv-track { --flv-basis: 36%; }
   .kb-cta { margin-left: 96px; }
 }
 
@@ -606,47 +590,39 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
           <div class="kb-head">
             <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><svg><use href="#ic-check"/></svg></span></h3>
           </div>
-          <div class="flv-viewport">
-            <div class="flv-track" role="radiogroup" aria-label="Sabor do pouch">
-              <label class="flv">
-                <input type="radio" name="sabor" value="menta" data-name="Menta">
-                <span class="flv-art">
-                  <img src="assets/seletor/sabor-menta.jpg" alt="Pouch DOT Menta" draggable="false">
-                  <span class="flv-name">Menta</span>
-                </span>
-                <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
-              </label>
-              <label class="flv" data-start>
-                <input type="radio" name="sabor" value="citrus" data-name="Citrus">
-                <span class="flv-art">
-                  <img src="assets/seletor/sabor-citrus.jpg" alt="Pouch DOT Citrus" draggable="false">
-                  <span class="flv-name">Citrus</span>
-                </span>
-                <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
-              </label>
-              <label class="flv">
-                <input type="radio" name="sabor" value="frutas-vermelhas" data-name="Frutas Vermelhas">
-                <span class="flv-art">
-                  <img src="assets/seletor/sabor-frutas-vermelhas.jpg" alt="Pouch DOT Frutas Vermelhas" draggable="false">
-                  <span class="flv-name">Frutas Vermelhas</span>
-                </span>
-                <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
-              </label>
-              <label class="flv">
-                <input type="radio" name="sabor" value="melancia" data-name="Melancia c/ Limão">
-                <span class="flv-art">
-                  <img src="assets/seletor/sabor-melancia.jpg" alt="Pouch DOT Melancia c/ Limão" draggable="false">
-                  <span class="flv-name">Melancia c/ Limão</span>
-                </span>
-                <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
-              </label>
-            </div>
-          </div>
-          <div class="flv-dots">
-            <button class="flv-dot" type="button" aria-label="Ver Menta"><span></span></button>
-            <button class="flv-dot" type="button" aria-label="Ver Citrus"><span></span></button>
-            <button class="flv-dot" type="button" aria-label="Ver Frutas Vermelhas"><span></span></button>
-            <button class="flv-dot" type="button" aria-label="Ver Melancia c/ Limão"><span></span></button>
+          <div class="flv-grid" role="radiogroup" aria-label="Sabor do pouch">
+            <label class="flv">
+              <input type="radio" name="sabor" value="menta" data-name="Menta">
+              <span class="flv-art">
+                <img src="assets/seletor/sabor-menta.jpg" alt="Pouch DOT Menta" draggable="false">
+                <span class="flv-name">Menta</span>
+              </span>
+              <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
+            </label>
+            <label class="flv">
+              <input type="radio" name="sabor" value="citrus" data-name="Citrus">
+              <span class="flv-art">
+                <img src="assets/seletor/sabor-citrus.jpg" alt="Pouch DOT Citrus" draggable="false">
+                <span class="flv-name">Citrus</span>
+              </span>
+              <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
+            </label>
+            <label class="flv">
+              <input type="radio" name="sabor" value="frutas-vermelhas" data-name="Frutas Vermelhas">
+              <span class="flv-art">
+                <img src="assets/seletor/sabor-frutas-vermelhas.jpg" alt="Pouch DOT Frutas Vermelhas" draggable="false">
+                <span class="flv-name">Frutas Vermelhas</span>
+              </span>
+              <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
+            </label>
+            <label class="flv">
+              <input type="radio" name="sabor" value="melancia" data-name="Melancia c/ Limão">
+              <span class="flv-art">
+                <img src="assets/seletor/sabor-melancia.jpg" alt="Pouch DOT Melancia c/ Limão" draggable="false">
+                <span class="flv-name">Melancia c/ Limão</span>
+              </span>
+              <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
+            </label>
           </div>
         </div>
       </div>
@@ -746,103 +722,10 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     input.addEventListener('click', (e) => e.preventDefault());
   });
 
-  // ---------- carrossel de sabores em loop infinito ----------
-  // os 4 cards originais (com os radios) ficam no grupo do meio; 3 grupos de cópias de cada lado.
-  // quando a rolagem para perto das cópias, a fileira salta 1 grupo — o conteúdo é idêntico, então não aparece.
-  const track = document.querySelector('.flv-track');
-  const originals = [...track.querySelectorAll('.flv')];
-  const COPIES = 3;
-  originals.forEach((card, i) => { card.dataset.index = i; });
-  const makeSet = () => originals.map((card) => {
-    const copy = card.cloneNode(true);
-    copy.querySelector('input').remove();
-    copy.removeAttribute('data-start');
-    copy.setAttribute('aria-hidden', 'true');
-    return copy;
-  });
-  for (let k = 0; k < COPIES; k++) {
-    track.prepend(...makeSet());
-    track.append(...makeSet());
-  }
-  const cards = [...track.querySelectorAll('.flv')];
-  const inputs = originals.map((card) => card.querySelector('input'));
-
-  const centerOf = (el) => { const r = el.getBoundingClientRect(); return r.left + r.width / 2; };
-  const offsetToCenter = (card) => centerOf(card) - centerOf(track);
-  const centerCard = (card, behavior) => track.scrollTo({ left: track.scrollLeft + offsetToCenter(card), behavior });
-  const nearest = (list) => list.reduce((a, b) => (Math.abs(offsetToCenter(b)) < Math.abs(offsetToCenter(a)) ? b : a));
-  const setWidth = () => centerOf(cards[originals.length]) - centerOf(cards[0]);
-
-  // mantém a rolagem no grupo do meio
-  const normalize = () => {
-    const w = setWidth();
-    const mid = centerOf(track);
-    const first = centerOf(originals[0]);
-    let delta = 0;
-    while (mid + delta < first - w / 2) delta += w;
-    while (mid + delta > first + w * 1.5) delta -= w;
-    if (delta) {
-      track.scrollLeft += delta;
-      if (drag) drag.left += delta;
-    }
-  };
-  let settle;
-  let anchor = null; // card mais perto do centro; usado para manter a posição se a largura mudar
-  track.addEventListener('scroll', () => {
-    anchor = nearest(cards);
-    updateDots(anchor);
-    const w = setWidth();
-    const mid = centerOf(track);
-    const first = centerOf(originals[0]);
-    if (mid < first - w * 1.5 || mid > first + w * 2.5) normalize(); // perto do fim das cópias: corrige já
-    clearTimeout(settle);
-    settle = setTimeout(() => { if (!drag) normalize(); }, 150);
-  }, { passive: true });
-
-  // arrastar com o mouse (no toque o navegador já rola sozinho)
-  let drag = null;
-  track.addEventListener('pointerdown', (e) => {
-    if (e.pointerType !== 'mouse') return;
-    drag = { x: e.clientX, left: track.scrollLeft, moved: false };
-  });
-  window.addEventListener('pointermove', (e) => {
-    if (!drag) return;
-    const dx = e.clientX - drag.x;
-    if (!drag.moved && Math.abs(dx) > 5) { drag.moved = true; track.classList.add('is-dragging'); }
-    if (drag.moved) track.scrollLeft = drag.left - dx;
-  });
-  window.addEventListener('pointerup', () => {
-    if (!drag) return;
-    const moved = drag.moved;
-    drag = null;
-    track.classList.remove('is-dragging');
-    normalize();
-    if (moved) track.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); }, { capture: true, once: true });
-  });
-
-  // pontinhos: marca o sabor mais perto do centro; clicar leva até ele pelo caminho mais curto
-  const dots = [...document.querySelectorAll('.flv-dot')];
-  function updateDots(near = nearest(cards)) {
-    const active = Number(near.dataset.index);
-    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === active));
-  }
-  dots.forEach((dot, i) => dot.addEventListener('click', () => {
-    centerCard(nearest(cards.filter((card) => Number(card.dataset.index) === i)), 'smooth');
-  }));
-
-  // abre com o citrus do grupo do meio no centro
-  anchor = track.querySelector('[data-start]');
-  centerCard(anchor, 'instant');
-  updateDots(anchor);
-
-  // se a largura da fileira mudar (girar o celular, barra de rolagem aparecer), recentraliza o mesmo card
-  let lastWidth = track.clientWidth;
-  new ResizeObserver(() => {
-    if (track.clientWidth === lastWidth) return;
-    lastWidth = track.clientWidth;
-    centerCard(anchor, 'instant');
-    normalize();
-  }).observe(track);
+  // ---------- seletor de sabores (grade 2x2) ----------
+  const grid = document.querySelector('.flv-grid');
+  const cards = [...grid.querySelectorAll('.flv')];
+  const inputs = cards.map((card) => card.querySelector('input'));
 
   // ---------- seleção ----------
   const flavor = document.getElementById('kb-flavor');
@@ -860,25 +743,10 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     flavorPanel.classList.add('is-alert');
   });
 
-  // clique num card (original ou cópia) marca o sabor e centraliza o card tocado, sem o salto do foco do navegador
-  let tapped = null;
-  track.addEventListener('click', (e) => {
-    const card = e.target.closest('.flv');
-    if (!card || e.target.matches('input')) return;
-    e.preventDefault();
-    const input = inputs[Number(card.dataset.index)];
-    tapped = card;
-    if (input.checked) { centerCard(card, 'smooth'); return; }
-    input.checked = true;
-    input.dispatchEvent(new Event('change', { bubbles: true }));
-  });
   inputs.forEach((input, i) => {
     input.addEventListener('change', () => {
-      cards.forEach((card) => card.classList.toggle('is-picked', Number(card.dataset.index) === i));
-      track.classList.add('has-pick');
-      const target = tapped && Number(tapped.dataset.index) === i ? tapped : nearest(cards.filter((card) => Number(card.dataset.index) === i));
-      tapped = null;
-      centerCard(target, 'smooth');
+      cards.forEach((card, j) => card.classList.toggle('is-picked', j === i));
+      grid.classList.add('has-pick');
       flavorDot.classList.add('is-done');
       warn.hidden = true;
       flavor.textContent = input.dataset.name;
@@ -887,7 +755,7 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   const clearFlavor = () => {
     inputs.forEach((input) => { input.checked = false; });
     cards.forEach((card) => card.classList.remove('is-picked'));
-    track.classList.remove('has-pick');
+    grid.classList.remove('has-pick');
     flavorDot.classList.remove('is-done');
     flavor.textContent = 'do sabor escolhido';
   };
@@ -904,25 +772,25 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   // ---------- carrinho ----------
   // Link de compra da Yampi: /r/TOKEN:QUANTIDADE,TOKEN:QUANTIDADE (mesmos produtos da oferta5)
   const YAMPI_CHECKOUT_URL = 'https://seguro.minhadot.com/r/';
-  // TODO: cupom da Yampi do kit. Por enquanto os brindes vão no link como produtos (tokens em GIFTS).
-  // Sem cupom, o link manda SEMCUPOM: a Yampi guarda o cupom da sessão entre links /r/
-  // (inclusive o da oferta5, que adiciona um pouch grátis) e um código inexistente limpa esse cupom.
-  const YAMPI_KIT_COUPON = '';
+  // Cupom do kit (9SMP = 9 sachês + mousepad): a Yampi adiciona como brinde o "Combo 9 sachês melancia + Mouse Pad"
+  // (SKU BRINDE6). Como na oferta5, o link leva só os pouches pagos + o cupom; o brinde não vai no link.
+  // O cupom também substitui qualquer cupom que a Yampi tenha guardado da sessão (ex.: o da oferta5).
+  const YAMPI_KIT_COUPON = 'FMUSGX9SMPX39NZ7';
   const FLAVORS = {
     menta: { name: 'Menta', token: 'T7OSNI4X3Z' },
     citrus: { name: 'Citrus', token: '5IM1U6QS0Q' },
     'frutas-vermelhas': { name: 'Frutas Vermelhas', token: 'KEWK5304MU' },
     melancia: { name: 'Melancia c/ Limão', token: 'R5F5MQP29R' },
   };
+  // brindes como aparecem no carrinho da página; na Yampi os dois vêm juntos no combo que o cupom do kit adiciona
   const GIFTS = [
-    // tokens da Yampi (mesmos da oferta6): MOUSEPAD DOT (BRINDE1) e 9 SACHÊS MELANCIA (BRINDE5)
-    { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500, token: 'A5DC5OXJLB' },
-    { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000, token: '4V00F08D6G' },
+    { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500 },
+    { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000 },
   ];
-  // desconto progressivo por quantidade de pouches — mesmos totais que a Yampi calcula no checkout
-  // (a regra da Yampi é percentual e arredonda 2 pouches para R$ 299,99)
+  // desconto progressivo por quantidade de pouches (mesma tabela da oferta5)
+  // obs.: a Yampi arredonda 2 pouches para R$ 299,99 no checkout; a página mostra R$ 299,98 por decisão da DOT
   const REGULAR_POUCH_CENTS = 16249;
-  const POUCH_TOTALS_CENTS = { 1: 16249, 2: 29999, 3: 37491, 4: 49988 };
+  const POUCH_TOTALS_CENTS = { 1: 16249, 2: 29998, 3: 37491, 4: 49988 };
   const EXTRA_POUCH_CENTS = 12497;
   const totalCents = (count) => {
     if (count <= 0) return 0;
@@ -1084,12 +952,9 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     if (leaving || !pouches.length) return;
     const quantities = new Map();
     pouches.forEach((key) => quantities.set(key, (quantities.get(key) || 0) + 1));
-    const items = [
-      ...[...quantities].map(([key, qty]) => `${FLAVORS[key].token}:${qty}`),
-      ...GIFTS.map((gift) => `${gift.token}:1`),
-    ];
+    const items = [...quantities].map(([key, qty]) => `${FLAVORS[key].token}:${qty}`);
     const url = new URL(YAMPI_CHECKOUT_URL + items.join(','));
-    url.searchParams.set('promocode', YAMPI_KIT_COUPON || 'SEMCUPOM');
+    url.searchParams.set('promocode', YAMPI_KIT_COUPON);
     new URLSearchParams(window.location.search).forEach((value, key) => {
       if (key.startsWith('utm_')) url.searchParams.set(key, value);
     });
