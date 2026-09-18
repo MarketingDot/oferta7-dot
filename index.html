@@ -249,11 +249,12 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .opt--locked { cursor: default; }
 
 /* 1. oferta (card só com a imagem, já selecionado) */
-.offer { position: relative; display: block; overflow: hidden; border: 1.5px solid var(--kb-pick); border-radius: 16px; background: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, .1); container-type: inline-size; }
+.kb-offer { margin-top: 14px; }
+.offer { position: relative; display: block; overflow: hidden; border-radius: 16px; container-type: inline-size; }
 .offer input { position: absolute; opacity: 0; pointer-events: none; }
-.offer-art { display: block; margin: calc(2cqw - 1.5px); overflow: hidden; border-radius: 12px; }
+.offer-art { display: block; overflow: hidden; border-radius: 16px; }
 .offer-art img { width: 100%; aspect-ratio: 1400 / 600; object-fit: cover; }
-.offer .flv-check { background: var(--kb-pick); color: #1a1a1a; }
+.offer .flv-check { top: 8px; right: 8px; background: var(--kb-pick); color: #1a1a1a; }
 
 /* 2. sabores — grade 2x2, foto ocupa 96% do card, nome sobre a foto */
 .flv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 680px; margin: 0 auto; padding: 4px 0 8px; }
@@ -345,6 +346,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 @media (min-width: 1024px) {
   .kb { padding: 80px 56px 96px; }
   .kb-step { display: grid; grid-template-columns: 96px 1fr; align-items: start; margin-top: 24px; }
+  .kb-offer { margin: 24px 0 0 96px; }
   .kb-num { position: static; width: auto; height: auto; background: none; color: var(--dot-navy); font-size: 132px; line-height: .8; letter-spacing: -.04em; justify-content: flex-start; }
   .kb-panel { padding: 32px 40px 36px; }
   .kb-cta { margin-left: 96px; }
@@ -637,21 +639,18 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
     <div class="kb-wrap">
       <h2 class="kb-title">Monte seu kit DOT</h2>
 
-      <!-- 1. oferta -->
-      <div class="kb-step">
-        <span class="kb-num" aria-hidden="true">1</span>
-        <div class="kb-panel">
-          <label class="offer opt--locked">
-            <input type="radio" name="oferta" value="kit-mousepad" checked>
-            <span class="offer-art"><img src="assets/seletor/oferta-kit.jpg" alt="4 pouches DOT + 9 sachês Melancia c/ Limão grátis (de R$ 40,00) + mousepad DOT grátis (de R$ 35,00)"></span>
-            <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
-          </label>
-        </div>
+      <!-- oferta (imagem do kit, sem número) -->
+      <div class="kb-offer">
+        <label class="offer opt--locked">
+          <input type="radio" name="oferta" value="kit-mousepad" checked>
+          <span class="offer-art"><img src="assets/seletor/oferta-kit.jpg" alt="4 pouches DOT + 9 sachês Melancia c/ Limão grátis (de R$ 40,00) + mousepad DOT grátis (de R$ 35,00)"></span>
+          <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
+        </label>
       </div>
 
-      <!-- 2. sabor -->
+      <!-- 1. sabor -->
       <div class="kb-step" id="passo-sabor">
-        <span class="kb-num" aria-hidden="true">2</span>
+        <span class="kb-num" aria-hidden="true">1</span>
         <div class="kb-panel">
           <div class="kb-head">
             <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><svg><use href="#ic-check"/></svg></span></h3>
@@ -693,9 +692,9 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
         </div>
       </div>
 
-      <!-- 3. brindes -->
+      <!-- 2. brindes -->
       <div class="kb-step">
-        <span class="kb-num" aria-hidden="true">3</span>
+        <span class="kb-num" aria-hidden="true">2</span>
         <div class="kb-panel">
           <div class="kb-head">
             <h3>Seus brindes</h3>
