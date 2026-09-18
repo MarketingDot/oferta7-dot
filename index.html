@@ -841,16 +841,21 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   });
 
   // Ao tocar no card, o navegador focava o radio escondido e rolava a pagina ate ele.
-  // Marca o sabor na mao e foca sem rolar; pelo teclado o radio segue funcionando normal.
+  // Nao focamos no toque (pelo teclado o radio segue normal) e ainda travamos a posicao:
+  // o Safari do iPhone ignora o preventScroll em varias versoes.
   cards.forEach((card, i) => {
     card.addEventListener('click', (event) => {
       event.preventDefault();
       const input = inputs[i];
+      const y = window.scrollY;
       if (!input.checked) {
         input.checked = true;
         input.dispatchEvent(new Event('change', { bubbles: true }));
       }
-      input.focus({ preventScroll: true });
+      const restaura = () => { if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y); };
+      requestAnimationFrame(restaura);
+      setTimeout(restaura, 60);
+      setTimeout(restaura, 200);
     });
   });
   const clearFlavor = () => {
