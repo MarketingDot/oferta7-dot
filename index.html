@@ -344,7 +344,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .kb-buy-cart { display: none; width: 24px; height: auto; flex-shrink: 0; }
 .kb-buy.is-ready .kb-buy-cart { display: block; }
 .kb-warn { margin-top: 10px; font-size: 14px; line-height: 20px; font-weight: 700; color: #c62828; }
-.kb-panel.is-alert, .kb-cta.is-alert { animation: kb-alert .6s ease 2; }
+.kb-panel.is-alert { animation: kb-alert .6s ease 2; }
 @keyframes kb-alert { 50% { box-shadow: 0 0 0 3px var(--kb-pick); } }
 
 @media (min-width: 560px) {
@@ -848,9 +848,10 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   const flavorPanel = document.querySelector('#passo-sabor .kb-panel');
   const cta = document.querySelector('.kb-cta');
   const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)');
-  // leva a pessoa ate um bloco e pisca a borda, do mesmo jeito nos dois sentidos
-  const levarPara = (alvo) => {
+  // leva a pessoa ate um bloco; o piscar da borda so entra quando falta escolher o sabor
+  const levarPara = (alvo, destacar) => {
     alvo.scrollIntoView({ behavior: semAnimacao.matches ? 'auto' : 'smooth', block: 'center' });
+    if (!destacar) return;
     alvo.classList.remove('is-alert');
     void alvo.offsetWidth;
     alvo.classList.add('is-alert');
@@ -859,7 +860,7 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     e.preventDefault();
     if (inputs.some((input) => input.checked)) { openCart(); return; }
     warn.hidden = false;
-    levarPara(flavorPanel);
+    levarPara(flavorPanel, true);
   });
 
   inputs.forEach((input, i) => {
@@ -899,7 +900,7 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
       setTimeout(restaura, 60);
       setTimeout(restaura, 200);
       // so depois da ultima correcao: leva ate o botao de adicionar ao carrinho
-      setTimeout(() => levarPara(cta), 260);
+      setTimeout(() => levarPara(cta, false), 260);
     });
   });
   const clearFlavor = () => {
