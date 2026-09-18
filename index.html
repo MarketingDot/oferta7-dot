@@ -229,21 +229,37 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .kb-title { font-family: var(--display); margin-bottom: 20px; text-align: center; font-size: 30px; line-height: 1.08; font-weight: 700; letter-spacing: -.02em; }
 
 .kb-step { position: relative; margin-top: 14px; }
+/* no mobile o numero sobe 14px sobre o painel; depois do banner isso encostava na imagem */
+.kb-offer + .kb-step { margin-top: 26px; }
 .kb-num { font-family: var(--display); position: absolute; left: 12px; top: -14px; z-index: 1; display: flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 50%; background: var(--dot-navy); color: var(--dot-cream); font-size: 17px; font-weight: 700; }
 .kb-panel { border: 1px solid var(--border); border-radius: 16px; background: var(--dot-cream); padding: 24px 12px 16px; }
 .kb-head { text-align: center; margin-bottom: 14px; }
 .kb-head h3 { font-size: 17px; line-height: 22px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
 .kb-head p { margin-top: 2px; font-size: 14px; line-height: 20px; color: #444; }
 .kb-todo { display: inline-flex; align-items: center; gap: 8px; }
-/* bolinha do título: pisca entre vazia e marcada até a pessoa escolher; depois fica marcada com check */
-.kb-dot { display: inline-flex; width: 20px; height: 20px; flex-shrink: 0; align-items: center; justify-content: center; border: 2px solid #1a1a1a; border-radius: 50%; color: transparent; animation: kb-dot-blink 3s ease-in-out infinite; }
-.kb-dot svg { width: 10px; height: 10px; }
-@keyframes kb-dot-blink {
-  0%, 35%, 100% { border-color: #1a1a1a; background: transparent; color: transparent; }
-  50%, 85% { border-color: var(--kb-pick); background: var(--kb-pick); color: #1a1a1a; }
+/* bolinha do título: as frutas dos sabores passam aparecendo e sumindo até a pessoa escolher;
+   depois a bolinha fica fixa com a fruta do sabor escolhido */
+.kb-dot { position: relative; display: inline-flex; width: 26px; height: 26px; flex-shrink: 0; border: 2px solid #1a1a1a; border-radius: 50%; }
+.kb-dot img { position: absolute; inset: 3px; width: calc(100% - 6px); height: calc(100% - 6px); object-fit: contain; opacity: 0; animation: kb-dot-fruit 10s ease-in-out infinite; }
+.kb-dot img:nth-child(2) { animation-delay: 2.5s; }
+.kb-dot img:nth-child(3) { animation-delay: 5s; }
+.kb-dot img:nth-child(4) { animation-delay: 7.5s; }
+@keyframes kb-dot-fruit {
+  0% { opacity: 0; transform: scale(.75); }
+  4%, 15% { opacity: 1; transform: scale(1); }
+  19%, 100% { opacity: 0; transform: scale(.75); }
 }
-.kb-dot.is-done { animation: none; border-color: var(--kb-pick); background: var(--kb-pick); color: #1a1a1a; }
-@media (prefers-reduced-motion: reduce) { .kb-dot { animation: none; } }
+.kb-dot[data-sabor="menta"] { --flavor-background: #a9e4f3; --flavor-accent: #14769b; }
+.kb-dot[data-sabor="citrus"] { --flavor-background: #ffe2a0; --flavor-accent: #b97913; }
+.kb-dot[data-sabor="frutas-vermelhas"] { --flavor-background: #f5bdd4; --flavor-accent: #b32a66; }
+.kb-dot[data-sabor="melancia"] { --flavor-background: #b9dda6; --flavor-accent: #2d804b; }
+.kb-dot.is-done { border-color: var(--flavor-accent, var(--kb-pick)); background: var(--flavor-background, var(--kb-pick)); }
+.kb-dot.is-done img { animation: none; opacity: 0; transform: none; }
+.kb-dot.is-done img.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .kb-dot img { animation: none; }
+  .kb-dot:not(.is-done) img:first-child { opacity: 1; transform: none; }
+}
 
 /* itens que já vêm marcados e não podem ser desmarcados */
 .opt--locked { cursor: default; }
@@ -254,7 +270,6 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .offer input { position: absolute; opacity: 0; pointer-events: none; }
 .offer-art { display: block; overflow: hidden; border-radius: 16px; }
 .offer-art img { width: 100%; aspect-ratio: 1400 / 600; object-fit: cover; }
-.offer .flv-check { top: 8px; right: 8px; background: var(--kb-pick); color: #1a1a1a; }
 
 /* 2. sabores — grade 2x2, foto ocupa 96% do card, nome sobre a foto */
 .flv-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 680px; margin: 0 auto; padding: 4px 0 8px; }
@@ -324,8 +339,12 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .kb-total s { font-size: 18px; color: #666; }
 .kb-buy { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 480px; margin: 14px auto 0; padding: 16px 20px; border: 2px solid var(--dot-navy); border-radius: 14px; background: var(--dot-yellow); color: var(--dot-navy); font-family: var(--sans); font-size: 18px; line-height: 24px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; transition: background-color .2s ease; }
 .kb-buy:hover { background: var(--dot-yellow-hover); color: #000; }
+/* o carrinho so aparece depois que a pessoa escolhe o sabor */
+.kb-buy { gap: 8px; padding-inline: 14px; }
+.kb-buy-cart { display: none; width: 24px; height: auto; flex-shrink: 0; }
+.kb-buy.is-ready .kb-buy-cart { display: block; }
 .kb-warn { margin-top: 10px; font-size: 14px; line-height: 20px; font-weight: 700; color: #c62828; }
-.kb-panel.is-alert { animation: kb-alert .6s ease 2; }
+.kb-panel.is-alert, .kb-cta.is-alert { animation: kb-alert .6s ease 2; }
 @keyframes kb-alert { 50% { box-shadow: 0 0 0 3px var(--kb-pick); } }
 
 @media (min-width: 560px) {
@@ -438,6 +457,8 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 /* Acabamento DOT sobre base creme; imagens e grade preservadas. */
 .btn, .kb-buy, .cart-finish, .kb-head h3 { font-family: var(--display); font-weight: 700; letter-spacing: .02em; }
 .btn-cart, .kb-buy, .cart-finish { font-size: 24px; }
+/* com o icone do carrinho o texto encostava na borda em telas estreitas: encolhe em vez de quebrar */
+.kb-buy { font-size: clamp(18px, 5.4vw, 24px); white-space: nowrap; }
 .btn-outline { border: 2px solid var(--dot-navy); border-radius: 14px; }
 .btn-outline:hover { border-color: var(--dot-navy); }
 .btn-cart:hover, .kb-buy:hover { color: var(--dot-navy); }
@@ -644,7 +665,6 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
         <label class="offer opt--locked">
           <input type="radio" name="oferta" value="kit-mousepad" checked>
           <span class="offer-art"><img src="assets/seletor/oferta-kit.jpg" alt="4 pouches DOT + 9 sachês Melancia c/ Limão grátis (de R$ 40,00) + mousepad DOT grátis (de R$ 35,00)"></span>
-          <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
         </label>
       </div>
 
@@ -653,7 +673,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
         <span class="kb-num" aria-hidden="true">1</span>
         <div class="kb-panel">
           <div class="kb-head">
-            <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><svg><use href="#ic-check"/></svg></span></h3>
+            <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><img src="assets/marca/menta.png" alt="" draggable="false"><img src="assets/marca/citrus.png" alt="" draggable="false"><img src="assets/marca/frutas-vermelhas.png" alt="" draggable="false"><img src="assets/marca/melancia.png" alt="" draggable="false"></span></h3>
           </div>
           <div class="flv-grid" role="radiogroup" aria-label="Sabor do pouch">
             <label class="flv">
@@ -725,7 +745,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="kb-cta">
         <p class="kb-summary">Seu kit: <b>1 Pouch <span id="kb-flavor">do sabor escolhido</span></b> + 9 sachês Melancia c/ Limão + Mousepad</p>
         <p class="kb-total"><b>R$ 162,49</b><s>R$ 237,49</s></p>
-        <a class="kb-buy" id="kb-buy" href="#passo-sabor">Adicionar ao carrinho</a>
+        <a class="kb-buy" id="kb-buy" href="#passo-sabor"><img class="kb-buy-cart" src="assets/carrinho/icone-carrinho.png" alt="" aria-hidden="true"><span id="kb-buy-label">Escolha 1 sabor</span></a>
         <p class="kb-warn" id="kb-warn" hidden>Escolha 1 sabor para continuar</p>
       </div>
     </div>
@@ -816,17 +836,30 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   // ---------- seleção ----------
   const flavor = document.getElementById('kb-flavor');
   const flavorDot = document.getElementById('kb-flavor-dot');
+  const dotMarks = [...flavorDot.querySelectorAll('img')];
   const buy = document.getElementById('kb-buy');
+  const buyLabel = document.getElementById('kb-buy-label');
+  // sem sabor o botao pede a escolha; com sabor vira "adicionar ao carrinho" com o icone
+  const setBuyState = (ready) => {
+    buy.classList.toggle('is-ready', ready);
+    buyLabel.textContent = ready ? 'Adicionar ao carrinho' : 'Escolha 1 sabor';
+  };
   const warn = document.getElementById('kb-warn');
   const flavorPanel = document.querySelector('#passo-sabor .kb-panel');
+  const cta = document.querySelector('.kb-cta');
+  const semAnimacao = window.matchMedia('(prefers-reduced-motion: reduce)');
+  // leva a pessoa ate um bloco e pisca a borda, do mesmo jeito nos dois sentidos
+  const levarPara = (alvo) => {
+    alvo.scrollIntoView({ behavior: semAnimacao.matches ? 'auto' : 'smooth', block: 'center' });
+    alvo.classList.remove('is-alert');
+    void alvo.offsetWidth;
+    alvo.classList.add('is-alert');
+  };
   buy.addEventListener('click', (e) => {
     e.preventDefault();
     if (inputs.some((input) => input.checked)) { openCart(); return; }
     warn.hidden = false;
-    flavorPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    flavorPanel.classList.remove('is-alert');
-    void flavorPanel.offsetWidth;
-    flavorPanel.classList.add('is-alert');
+    levarPara(flavorPanel);
   });
 
   inputs.forEach((input, i) => {
@@ -834,6 +867,9 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
       cards.forEach((card, j) => card.classList.toggle('is-picked', j === i));
       grid.classList.add('has-pick');
       flavorDot.classList.add('is-done');
+      dotMarks.forEach((mark, j) => mark.classList.toggle('is-on', j === i));
+      flavorDot.dataset.sabor = input.value;
+      setBuyState(true);
       warn.hidden = true;
       flavor.textContent = input.dataset.name;
     });
@@ -862,6 +898,8 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
       requestAnimationFrame(restaura);
       setTimeout(restaura, 60);
       setTimeout(restaura, 200);
+      // so depois da ultima correcao: leva ate o botao de adicionar ao carrinho
+      setTimeout(() => levarPara(cta), 260);
     });
   });
   const clearFlavor = () => {
@@ -869,6 +907,9 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     cards.forEach((card) => card.classList.remove('is-picked'));
     grid.classList.remove('has-pick');
     flavorDot.classList.remove('is-done');
+    dotMarks.forEach((mark) => mark.classList.remove('is-on'));
+    delete flavorDot.dataset.sabor;
+    setBuyState(false);
     flavor.textContent = 'do sabor escolhido';
   };
   const selectFlavor = (key) => {
