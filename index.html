@@ -844,6 +844,13 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   // Nao focamos no toque (pelo teclado o radio segue normal) e ainda travamos a posicao:
   // o Safari do iPhone ignora o preventScroll em varias versoes.
   cards.forEach((card, i) => {
+    // O navegador foca o radio escondido ja no mousedown/pointerdown, e e o foco que rola
+    // a pagina ate ele. Barrar aqui evita o salto na origem; o clique segue normal.
+    ['pointerdown', 'mousedown'].forEach((tipo) => {
+      card.addEventListener(tipo, (event) => {
+        if (event.button === undefined || event.button === 0) event.preventDefault();
+      });
+    });
     card.addEventListener('click', (event) => {
       event.preventDefault();
       const input = inputs[i];
