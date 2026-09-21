@@ -118,7 +118,7 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .kit-ic { width: 58px; height: 58px; flex-shrink: 0; background: var(--dot-navy); -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat; }
 .kit-ic-pouch { --ic: url(assets/kit/ic-pouch.webp); }
 .kit-ic-saches { --ic: url(assets/kit/ic-saches.webp); }
-.kit-ic-mousepad { --ic: url(assets/kit/ic-mousepad.webp); }
+.kit-ic-bloco { --ic: url(assets/kit/ic-bloco.webp); }
 .kit-part b { display: block; font-size: 16px; line-height: 20px; font-weight: 700; letter-spacing: -.01em; }
 .kit-part span { display: block; margin-top: 2px; font-size: 12px; line-height: 15px; letter-spacing: -.01em; color: #3d4a5f; }
 .kit-sep { flex-shrink: 0; margin-top: 14px; font-size: 22px; line-height: 30px; font-weight: 400; color: var(--dot-navy); }
@@ -564,7 +564,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
     <div class="hero-wrap">
       <article class="pcard">
         <div class="pcard-media">
-          <img src="assets/kit-oferta-gratis.webp" alt="4 pouches DOT, 9 sachês Melancia c/ Limão grátis e mousepad DOT grátis" width="1226" height="1283" fetchpriority="high" decoding="async">
+          <img src="assets/kit-oferta-bloco.webp" alt="4 pouches DOT, 9 sachês Melancia c/ Limão grátis e bloco de anotações DOT grátis" width="1226" height="1283" fetchpriority="high" decoding="async">
         </div>
         <div class="pcard-body">
           <h1 class="pcard-title"><span class="nowrap">Mais energia.</span> <span class="nowrap">Mais DOT.</span> <span class="nowrap">Mais vantagem.</span></h1>
@@ -580,8 +580,8 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
             </li>
             <li class="kit-sep" aria-hidden="true">+</li>
             <li class="kit-part">
-              <span class="kit-ic kit-ic-mousepad" aria-hidden="true"></span>
-              <p><b>Mousepad</b><span>DOT exclusivo</span></p>
+              <span class="kit-ic kit-ic-bloco" aria-hidden="true"></span>
+              <p><b>Bloco de anotações</b><span>DOT exclusivo</span></p>
             </li>
           </ul>
           <p class="pcard-contains">34 sachês no total</p>
@@ -808,8 +808,8 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
             <label class="flv flv--static opt--locked is-picked">
               <input type="checkbox" name="brinde" value="mousepad" checked>
               <span class="flv-art">
-                <img src="assets/seletor/brinde-mousepad.webp" alt="Mousepad DOT grátis" width="640" height="800" loading="lazy" decoding="async">
-                <span class="flv-name">Mousepad DOT</span>
+                <img src="assets/seletor/brinde-bloco.webp" alt="Bloco de anotações DOT grátis" width="640" height="800" loading="lazy" decoding="async">
+                <span class="flv-name">Bloco de anotações DOT</span>
               </span>
               <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
             </label>
@@ -819,7 +819,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 
       <!-- CTA -->
       <div class="kb-cta">
-        <p class="kb-summary">Seu kit: <b>1 Pouch <span id="kb-flavor">do sabor escolhido</span></b> + 9 sachês Melancia c/ Limão + Mousepad</p>
+        <p class="kb-summary">Seu kit: <b>1 Pouch <span id="kb-flavor">do sabor escolhido</span></b> + 9 sachês Melancia c/ Limão + Bloco de anotações</p>
         <p class="kb-total"><b>R$ 162,49</b><s>R$ 237,49</s></p>
         <a class="kb-buy" id="kb-buy" href="#passo-sabor"><img class="kb-buy-cart" src="assets/carrinho/icone-carrinho.png" alt="" aria-hidden="true" width="150" height="128" decoding="async"><span id="kb-buy-label">Escolha 1 sabor</span></a>
         <p class="kb-warn" id="kb-warn" hidden>Escolha 1 sabor para continuar</p>
@@ -1060,7 +1060,7 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
   };
   // brindes como aparecem no carrinho da página; na Yampi os dois vêm juntos no combo que o cupom do kit adiciona
   const GIFTS = [
-    { name: 'Mousepad DOT', img: 'brinde-mousepad.jpg', oldCents: 3500 },
+    { name: 'Bloco de anotações DOT', img: 'brinde-bloco.webp', oldCents: 3500 },
     { name: '9 sachês Melancia c/ Limão', img: 'brinde-saches.jpg', oldCents: 4000 },
   ];
   // desconto progressivo por quantidade de pouches (mesma tabela da oferta5)
