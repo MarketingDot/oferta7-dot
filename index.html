@@ -107,47 +107,81 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .pcard { overflow: hidden; border: 2px solid var(--dot-navy); border-radius: 20px; background: var(--dot-cream); box-shadow: none; }
 .pcard-media { padding: 20px; background: var(--dot-cream); }
 .pcard-media img { width: 100%; height: auto; aspect-ratio: 1226 / 1283; object-fit: cover; border-radius: 12px; }
-.pcard-body { padding: 28px 24px 24px; text-align: left; container-type: inline-size; }
-.pcard-eyebrow { font-size: 14px; line-height: 18px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; color: var(--dot-blue); }
-.pcard-title { margin-top: 12px; font-family: var(--display); font-size: min(10.6cqi, 40px); line-height: 1.08; font-weight: 700; letter-spacing: -.02em; text-wrap: balance; }
+.pcard-body { padding: 12px 24px 24px; text-align: left; container-type: inline-size; }
+.pcard-eyebrow { font-size: 15px; line-height: 18px; font-weight: 700; letter-spacing: .01em; text-transform: uppercase; color: var(--dot-navy); }
+.pcard .pcard-title { font-family: var(--display); font-size: min(11.4cqi, 44px); line-height: 1; font-weight: 700; letter-spacing: -.035em; text-wrap: balance; }
 .nowrap { white-space: nowrap; }
 
-/* o que vem no kit: icone + texto, com "+" entre as partes */
-.kit-parts { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 22px; }
-.kit-part { display: flex; width: 100%; align-items: center; gap: 12px; }
-.kit-ic { width: 34px; height: 34px; flex-shrink: 0; color: var(--dot-navy); }
-.kit-part b { display: block; font-size: 17px; line-height: 22px; font-weight: 700; }
-.kit-part span { display: block; margin-top: 2px; font-size: 14px; line-height: 19px; color: var(--dot-blue); }
-.kit-sep { width: 100%; padding-left: 10px; font-size: 22px; line-height: 1; font-weight: 700; color: var(--dot-navy); }
+/* o que vem no kit: as tres partes lado a lado, desenho em cima e texto embaixo, "+" na altura dos desenhos */
+.kit-parts { display: flex; align-items: flex-start; gap: 2px; margin: 22px -8px 0; }
+.kit-part { display: flex; flex: 1; min-width: 0; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.kit-ic { width: 58px; height: 58px; flex-shrink: 0; background: var(--dot-navy); -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat; }
+.kit-ic-pouch { --ic: url(assets/kit/ic-pouch.png); }
+.kit-ic-saches { --ic: url(assets/kit/ic-saches.png); }
+.kit-ic-mousepad { --ic: url(assets/kit/ic-mousepad.png); }
+.kit-part b { display: block; font-size: 16px; line-height: 20px; font-weight: 700; letter-spacing: -.01em; }
+.kit-part span { display: block; margin-top: 2px; font-size: 12px; line-height: 15px; letter-spacing: -.01em; color: #3d4a5f; }
+.kit-sep { flex-shrink: 0; margin-top: 14px; font-size: 22px; line-height: 30px; font-weight: 400; color: var(--dot-navy); }
 
-.pcard-contains { margin-top: 22px; font-family: var(--display); font-size: 20px; line-height: 26px; font-weight: 700; }
-.pcard-offer { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 16px; }
+.pcard-contains { margin-top: 22px; font-family: var(--display); font-size: 20px; line-height: 26px; font-weight: 700; letter-spacing: -.01em; }
+.pcard-offer { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 10px; }
 .pcard-price { display: flex; flex-direction: column; }
-.pcard-price s { font-size: 20px; line-height: 1.2; color: var(--dot-blue); }
-.pcard-price b { font-family: var(--display); font-size: 52px; line-height: 1.05; font-weight: 700; letter-spacing: -.02em; }
-.btn-cart { display: flex; width: 100%; align-items: center; justify-content: center; gap: 10px; padding: 16px 24px; border: 2px solid var(--dot-navy); border-radius: 999px; background: var(--dot-yellow); color: var(--dot-navy); font-size: 18px; line-height: 24px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; transition: background-color .2s ease; }
-.btn-cart:hover { background: var(--dot-yellow-hover); color: #000; }
-.btn-arrow { width: 20px; height: 20px; flex-shrink: 0; }
+.pcard-price s { font-size: 22px; line-height: 1.15; font-weight: 500; color: #8a93a3; }
+.pcard .pcard-price b { font-family: var(--display); font-size: min(17cqi, 64px); line-height: 1; font-weight: 700; letter-spacing: -.045em; }
+.pcard .btn-cart { display: flex; width: 100%; align-items: center; justify-content: center; gap: 12px; padding: 18px 24px; border: 0; border-radius: 999px; background: var(--dot-navy); color: var(--dot-cream); font-size: 20px; line-height: 24px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; transition: background-color .2s ease, color .2s ease; }
+.pcard .btn-cart:hover { background: var(--dot-yellow); color: var(--dot-navy); }
+.btn-arrow { width: 22px; height: 22px; flex-shrink: 0; }
 
 /* faixa de beneficios no rodape do card */
-.pcard-benefits { display: flex; margin-top: 26px; border-top: 1px solid var(--border); padding-top: 18px; }
-.pcard-benefits li { display: flex; flex: 1; min-width: 0; align-items: center; gap: 8px; padding: 0 10px; }
+.pcard-benefits { display: flex; margin-top: 24px; border-top: 1px solid var(--border); padding-top: 18px; }
+.pcard-benefits li { display: flex; flex: 1; min-width: 0; align-items: center; gap: 8px; padding: 2px 10px; }
 .pcard-benefits li + li { border-left: 1px solid var(--border); }
 .pcard-benefits li:first-child { padding-left: 0; }
 .pcard-benefits li:last-child { padding-right: 0; }
-.pcard-benefits svg { width: 22px; height: 22px; flex-shrink: 0; color: var(--dot-navy); }
-.pcard-benefits span { font-size: 12px; line-height: 15px; }
+.pcard-benefits svg { width: 26px; height: 26px; flex-shrink: 0; color: var(--dot-navy); }
+.pcard-benefits span { font-size: 12.5px; line-height: 15px; }
+/* no celular as tres colunas sao estreitas: icone em cima e texto centralizado, sem quebrar em 4 linhas */
+@media (max-width: 767px) {
+  .pcard-benefits li { flex-direction: column; justify-content: flex-start; gap: 6px; padding: 2px 6px; text-align: center; }
+  .pcard-benefits li:first-child, .pcard-benefits li:last-child { padding-left: 6px; padding-right: 6px; }
+  .pcard-benefits span { font-size: 13px; line-height: 16px; }
+
+  /* card mais compacto no celular para o botao aparecer sem rolar tanto */
+  .hero { padding: 12px 12px 32px; }
+  .pcard { border-radius: 18px; }
+  .pcard-media { padding: 12px 12px 0; }
+  .pcard-media img { aspect-ratio: 1226 / 1130; object-position: center 45%; border-radius: 10px; }
+  .pcard-body { padding: 16px 18px 20px; }
+  .pcard .pcard-title { font-size: min(10.4cqi, 38px); }
+  .kit-parts { margin: 14px -6px 0; }
+  .kit-part { gap: 6px; }
+  .kit-ic { width: 48px; height: 48px; }
+  .kit-sep { margin-top: 9px; }
+  .kit-part b { font-size: 15px; line-height: 18px; }
+  .pcard-contains { margin-top: 14px; font-size: 16px; line-height: 20px; }
+  .pcard-offer { gap: 12px; margin-top: 4px; }
+  .pcard-price { flex-direction: row; align-items: baseline; gap: 10px; }
+  .pcard-price s { order: 2; font-size: 18px; }
+  .pcard .pcard-price b { font-size: min(14.5cqi, 52px); }
+  .pcard .btn-cart { padding: 16px 24px; font-size: 19px; }
+  .pcard-benefits { margin-top: 18px; padding-top: 14px; }
+}
 
 @media (min-width: 768px) {
   .hero { padding: 32px 40px 60px; }
   .pcard-media { padding: 32px; }
   .pcard-body { padding: 36px 40px 40px; }
-  .pcard-title { font-size: min(10.6cqi, 52px); }
-  .pcard-price b { font-size: 56px; }
-  .kit-parts { flex-wrap: nowrap; gap: 14px; }
-  .kit-part { width: auto; flex: 1; }
-  .kit-sep { width: auto; padding-left: 0; }
-  .btn-cart { width: auto; margin-left: auto; }
+  .pcard .pcard-title { font-size: min(10.6cqi, 56px); }
+  .pcard .pcard-price b { font-size: 64px; }
+  /* no tablet cabe o desenho ao lado do texto, como na arte */
+  .kit-parts { align-items: center; gap: 14px; margin: 22px 0 0; }
+  .kit-part { flex-direction: row; gap: 12px; text-align: left; }
+  .kit-ic { width: 56px; height: 56px; }
+  .kit-sep { margin-top: 0; }
+  .br-m { display: none; }
+  .kit-part b { font-size: 18px; line-height: 22px; }
+  .kit-part span { font-size: 14px; line-height: 18px; }
+  .pcard .btn-cart { width: auto; margin-left: auto; padding: 20px 36px; }
   .pcard-benefits span { font-size: 13px; line-height: 17px; }
 }
 @media (min-width: 1024px) {
@@ -155,14 +189,16 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
   .pcard { display: grid; grid-template-columns: 1fr 1fr; }
   .pcard-media { display: flex; align-items: center; padding: 40px; }
   .pcard-body { display: flex; flex-direction: column; justify-content: center; padding: 56px; }
-  .pcard-title { font-size: min(10.6cqi, 46px); }
-  /* aqui o card vira duas colunas: a coluna de texto fica estreita, entao as partes voltam empilhadas */
-  .kit-parts { flex-wrap: wrap; }
-  .kit-part { width: 100%; flex: none; }
-  .kit-sep { width: 100%; padding-left: 10px; }
-  .pcard-price b { font-size: 58px; }
+  .pcard .pcard-title { font-size: min(11cqi, 52px); }
+  /* aqui o card vira duas colunas: a coluna de texto fica estreita, entao volta o desenho em cima do texto */
+  .kit-parts { align-items: flex-start; gap: 8px; }
+  .kit-part { flex-direction: column; gap: 10px; text-align: center; }
+  .kit-ic { width: 64px; height: 64px; }
+  .kit-sep { margin-top: 17px; }
+  .pcard .pcard-price b { font-size: 60px; }
+  /* botao ocupa toda a largura da coluna de texto, alinhado com o titulo e as partes do kit */
+  .pcard .btn-cart { width: 100%; margin-left: 0; }
   .pcard-price s { font-size: 24px; }
-  .btn-cart { font-size: 20px; padding: 18px 30px; }
 }
 
 /* ---------- como usar ---------- */
@@ -484,7 +520,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .btn-outline { border: 2px solid var(--dot-navy); border-radius: 14px; }
 .btn-outline:hover { border-color: var(--dot-navy); }
 .btn-cart:hover, .kb-buy:hover { color: var(--dot-navy); }
-.pcard-title, .pcard-price b, .kb-title, .kb-total b, .cart-head h2, .cart-summary-row strong { letter-spacing: 0; }
+.kb-title, .kb-total b, .cart-head h2, .cart-summary-row strong { letter-spacing: 0; }
 .ben-panel .t-sub2 { color: var(--dot-yellow); font-weight: 700; }
 .ben-card[data-expanded="true"] .ben-trigger-ic { background: var(--dot-yellow); }
 .cart-add-label { width: min(230px, calc(100vw - 135px)); max-width: none; white-space: normal; line-height: 1.2; }
@@ -509,6 +545,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
   <symbol id="ic-pouch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 5.6 8.2 2.8h7.6l1.6 2.8"/><path d="M6.6 5.6h10.8v13.1a2.3 2.3 0 0 1-2.3 2.3H8.9a2.3 2.3 0 0 1-2.3-2.3Z"/><path d="M8.9 8.6h6.2"/></symbol>
   <symbol id="ic-saches" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5.2" width="13.4" height="7.4" rx="1.6" transform="rotate(-7 9.3 8.9)"/><rect x="8" y="11.6" width="13.4" height="7.4" rx="1.6" transform="rotate(-7 14.7 15.3)"/></symbol>
   <symbol id="ic-mousepad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.6" r="7.1"/><path d="M8.4 17.2h7.2a2.2 2.2 0 0 1 0 4.4H8.4a2.2 2.2 0 0 1 0-4.4Z"/></symbol>
+  <symbol id="ic-rotina" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 2.8h13.6v4.4H5.2z"/><path d="M5.2 7.2v7.6c0 3.1 3.3 5.4 6.8 6.4 3.5-1 6.8-3.3 6.8-6.4V7.2"/></symbol>
   <symbol id="ic-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 20.4 7v10L12 21.2 3.6 17V7Z"/><path d="M3.6 7 12 11.3 20.4 7M12 11.3v9.9"/></symbol>
   <symbol id="ic-star" viewBox="0 0 30 31"><path d="M15 1.4l3.7 11.4h12l-9.7 7 3.7 11.4-9.7-7-9.7 7 3.7-11.4-9.7-7h12L15 1.4Z"/></symbol>
 </svg>
@@ -531,21 +568,20 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
           <img src="assets/kit-oferta-mousepad-v2.jpg" alt="4 pouches DOT, sachês Melancia c/ Limão, mouse pad e apoio de teclado DOT" width="1226" height="1283">
         </div>
         <div class="pcard-body">
-          <p class="pcard-eyebrow">Kit DOT</p>
-          <h1 class="pcard-title">Mais energia. Mais DOT. Mais vantagem.</h1>
+          <h1 class="pcard-title"><span class="nowrap">Mais energia.</span> <span class="nowrap">Mais DOT.</span> <span class="nowrap">Mais vantagem.</span></h1>
           <ul class="kit-parts">
             <li class="kit-part">
-              <svg class="kit-ic" aria-hidden="true"><use href="#ic-pouch"/></svg>
+              <span class="kit-ic kit-ic-pouch" aria-hidden="true"></span>
               <p><b>1 pouch</b><span>à sua escolha<br>com 25 sachês</span></p>
             </li>
             <li class="kit-sep" aria-hidden="true">+</li>
             <li class="kit-part">
-              <svg class="kit-ic" aria-hidden="true"><use href="#ic-saches"/></svg>
-              <p><b>9 sachês</b><span>extras de<br>Melancia com Limão</span></p>
+              <span class="kit-ic kit-ic-saches" aria-hidden="true"></span>
+              <p><b>+ 9 sachês</b><span>extras de<br>Melancia <br class="br-m">com Limão</span></p>
             </li>
             <li class="kit-sep" aria-hidden="true">+</li>
             <li class="kit-part">
-              <svg class="kit-ic" aria-hidden="true"><use href="#ic-mousepad"/></svg>
+              <span class="kit-ic kit-ic-mousepad" aria-hidden="true"></span>
               <p><b>Mousepad</b><span>DOT exclusivo</span></p>
             </li>
           </ul>
@@ -557,7 +593,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
           <ul class="pcard-benefits">
             <li><svg aria-hidden="true"><use href="#ic-bolt"/></svg><span>Energia e foco</span></li>
             <li><svg aria-hidden="true"><use href="#ic-cube"/></svg><span>Sem adição de açúcares</span></li>
-            <li><svg aria-hidden="true"><use href="#ic-pocket"/></svg><span>Cabe na sua rotina</span></li>
+            <li><svg aria-hidden="true"><use href="#ic-rotina"/></svg><span>Cabe na sua rotina</span></li>
           </ul>
         </div>
       </article>
