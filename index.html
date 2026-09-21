@@ -85,7 +85,7 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 }
 
 /* ---------- cabeçalho ---------- */
-.header { position: relative; width: 100%; background: var(--dot-navy) url(assets/marca/textura.png) center / cover; }
+.header { position: relative; width: 100%; background: var(--dot-navy) url(assets/marca/textura.webp) center / cover; }
 .header-bar { display: flex; height: 48px; align-items: center; justify-content: center; padding: 0 24px; background: transparent; }
 .logo { display: flex; justify-content: center; }
 .logo-mark { display: block; width: 76px; aspect-ratio: 920 / 332; background: url(assets/dot-logo-creme.png) center / contain no-repeat; }
@@ -116,9 +116,9 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .kit-parts { display: flex; align-items: flex-start; gap: 2px; margin: 22px -8px 0; }
 .kit-part { display: flex; flex: 1; min-width: 0; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .kit-ic { width: 58px; height: 58px; flex-shrink: 0; background: var(--dot-navy); -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat; }
-.kit-ic-pouch { --ic: url(assets/kit/ic-pouch.png); }
-.kit-ic-saches { --ic: url(assets/kit/ic-saches.png); }
-.kit-ic-mousepad { --ic: url(assets/kit/ic-mousepad.png); }
+.kit-ic-pouch { --ic: url(assets/kit/ic-pouch.webp); }
+.kit-ic-saches { --ic: url(assets/kit/ic-saches.webp); }
+.kit-ic-mousepad { --ic: url(assets/kit/ic-mousepad.webp); }
 .kit-part b { display: block; font-size: 16px; line-height: 20px; font-weight: 700; letter-spacing: -.01em; }
 .kit-part span { display: block; margin-top: 2px; font-size: 12px; line-height: 15px; letter-spacing: -.01em; color: #3d4a5f; }
 .kit-sep { flex-shrink: 0; margin-top: 14px; font-size: 22px; line-height: 30px; font-weight: 400; color: var(--dot-navy); }
@@ -234,9 +234,9 @@ sup { font-size: max(12px, .75em); line-height: 0; vertical-align: super; }
 .ben-media { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .ben-media img, .ben-media .ph { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 1.25; transition: transform .3s; }
 .ben-card:hover .ben-media img { transform: scale(1.1); }
-.ben-text { flex-grow: 1; overflow: hidden; background: var(--dot-blue) url('assets/marca/textura.png') center / cover; color: var(--dot-cream); padding: 24px 16px; }
+.ben-text { flex-grow: 1; overflow: hidden; background: var(--dot-blue) url('assets/marca/textura.webp') center / cover; color: var(--dot-cream); padding: 24px 16px; }
 .ben-text p { margin-top: 8px; }
-.ben-panel { position: absolute; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; height: 100%; width: 100%; flex-direction: column; justify-content: flex-end; transform: translateY(100%); border-radius: 4px; background: var(--dot-blue) url('assets/marca/textura.png') center / cover; color: var(--dot-cream); padding: 24px 16px; transition: transform .3s; }
+.ben-panel { position: absolute; left: 0; right: 0; bottom: 0; z-index: 10; display: flex; height: 100%; width: 100%; flex-direction: column; justify-content: flex-end; transform: translateY(100%); border-radius: 4px; background: var(--dot-blue) url('assets/marca/textura.webp') center / cover; color: var(--dot-cream); padding: 24px 16px; transition: transform .3s; }
 .ben-card[data-expanded="true"] .ben-panel { transform: translateY(0); }
 .ben-panel h3 { padding-top: 50px; }
 .ben-panel .ben-detail { margin-top: 8px; }
@@ -357,9 +357,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
 .flv-grid .flv.is-picked .flv-check--flavor img { filter: none; opacity: 1; }
 
 /* Tabela de sabores aprovada, entre ingredientes e montagem do kit */
-@font-face { font-family: 'DOT Lifehack'; src: url('assets/marca/lifehack.otf') format('opentype'); font-weight: 400; font-display: swap; }
-@font-face { font-family: 'DOT Lifehack'; src: url('assets/marca/lifehack-bold.otf') format('opentype'); font-weight: 700; font-display: swap; }
-.taste-section { width: 100%; background: var(--dot-blue) url('assets/marca/textura.png') center / cover; color: var(--dot-cream); }
+.taste-section { width: 100%; background: var(--dot-blue) url('assets/marca/textura.webp') center / cover; color: var(--dot-cream); }
 .taste-section .container { padding-left: 16px; padding-right: 16px; }
 .taste-heading { padding-bottom: 32px; }
 .taste-band { padding: 24px 0; }
@@ -565,7 +563,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
     <div class="hero-wrap">
       <article class="pcard">
         <div class="pcard-media">
-          <img src="assets/kit-oferta-mousepad-v2.jpg" alt="4 pouches DOT, sachês Melancia c/ Limão, mouse pad e apoio de teclado DOT" width="1226" height="1283">
+          <img src="assets/kit-oferta-mousepad-v2.webp" alt="4 pouches DOT, sachês Melancia c/ Limão, mouse pad e apoio de teclado DOT" width="1226" height="1283" fetchpriority="high" decoding="async">
         </div>
         <div class="pcard-body">
           <h1 class="pcard-title"><span class="nowrap">Mais energia.</span> <span class="nowrap">Mais DOT.</span> <span class="nowrap">Mais vantagem.</span></h1>
@@ -608,19 +606,19 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="steps-title"><p class="t-h1">Como usar</p></div>
       <div class="steps-grid">
         <div class="step">
-          <div class="step-media"><img src="assets/usar-1-bolso.jpg" alt="Sachê DOT Menta sendo guardado no bolso da calça" loading="lazy" width="1122" height="1402"></div>
+          <div class="step-media"><img src="assets/usar-1-bolso.webp" alt="Sachê DOT Menta sendo guardado no bolso da calça" loading="lazy" width="1122" height="1402" decoding="async"></div>
           <p class="step-caption"><b>1. Leve com você</b><span>Um sachê que cabe no bolso.</span></p>
         </div>
         <div class="step">
-          <div class="step-media"><img src="assets/usar-2-abrir.jpg" alt="Mãos abrindo o sachê DOT Menta" loading="lazy" width="1122" height="1402"></div>
+          <div class="step-media"><img src="assets/usar-2-abrir.webp" alt="Mãos abrindo o sachê DOT Menta" loading="lazy" width="1122" height="1402" decoding="async"></div>
           <p class="step-caption"><b>2. Abra quando precisar</b><span>Energia na hora que o dia pedir.</span></p>
         </div>
         <div class="step">
-          <div class="step-media"><img src="assets/usar-3-dose.jpg" alt="Duas pastilhas DOT na palma da mão" loading="lazy" width="1122" height="1402"></div>
+          <div class="step-media"><img src="assets/usar-3-dose.webp" alt="Duas pastilhas DOT na palma da mão" loading="lazy" width="1122" height="1402" decoding="async"></div>
           <p class="step-caption"><b>3. Escolha sua dose</b><span>1 ou 2 pastilhas.</span></p>
         </div>
         <div class="step">
-          <div class="step-media"><img src="assets/usar-4-dissolver.jpg" alt="Pastilha DOT sendo colocada na boca" loading="lazy" width="1122" height="1402"></div>
+          <div class="step-media"><img src="assets/usar-4-dissolver.webp" alt="Pastilha DOT sendo colocada na boca" loading="lazy" width="1122" height="1402" decoding="async"></div>
           <p class="step-caption"><b>4. Deixe dissolver</b><span>Sem água. Sem preparo.</span></p>
         </div>
       </div>
@@ -641,7 +639,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       </div>
       <div class="ben-grid">
         <article class="ben-card" data-expanded="false">
-          <div class="ben-media"><img src="assets/mp-cafeina.jpg" alt="Grãos de café torrados"></div>
+          <div class="ben-media"><img src="assets/mp-cafeina.webp" alt="Grãos de café torrados" width="1400" height="933" loading="lazy" decoding="async"></div>
           <div class="ben-text">
             <h3 class="t-h2">Cafeína</h3>
             <p class="t-body1">São 80 mg de cafeína por sachê, divididos em duas pastilhas que dissolvem na boca.</p>
@@ -658,7 +656,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
           </button>
         </article>
         <article class="ben-card" data-expanded="false">
-          <div class="ben-media"><img src="assets/mp-taurina.jpg" alt="Taurina em pó com colher dosadora"></div>
+          <div class="ben-media"><img src="assets/mp-taurina.webp" alt="Taurina em pó com colher dosadora" width="1400" height="933" loading="lazy" decoding="async"></div>
           <div class="ben-text">
             <h3 class="t-h2">Taurina</h3>
             <p class="t-body1">O aminoácido clássico dos energéticos, junto da cafeína em cada sachê.</p>
@@ -675,7 +673,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
           </button>
         </article>
         <article class="ben-card" data-expanded="false">
-          <div class="ben-media"><img src="assets/mp-5-minutos.jpg" alt="Cronômetro marcando 5 minutos"></div>
+          <div class="ben-media"><img src="assets/mp-5-minutos.webp" alt="Cronômetro marcando 5 minutos" width="1400" height="933" loading="lazy" decoding="async"></div>
           <div class="ben-text">
             <h3 class="t-h2">Efeito em 5 minutos</h3>
             <p class="t-body1">As pastilhas dissolvem na boca e o efeito começa em cerca de 5 minutos.</p>
@@ -692,7 +690,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
           </button>
         </article>
         <article class="ben-card" data-expanded="false">
-          <div class="ben-media"><img src="assets/mp-zero-acucar.jpg" alt="Cubo de açúcar com símbolo de proibido"></div>
+          <div class="ben-media"><img src="assets/mp-zero-acucar.webp" alt="Cubo de açúcar com símbolo de proibido" width="1400" height="933" loading="lazy" decoding="async"></div>
           <div class="ben-text">
             <h3 class="t-h2">Zero açúcar</h3>
             <p class="t-body1">Sem adição de açúcares, em quatro sabores para escolher.</p>
@@ -724,7 +722,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="container">
       <div class="taste-guide">
     <div class="taste-scroll" role="region" aria-label="Comparação dos sabores">
-      <table><thead><tr><th scope="col">Perfil</th><th scope="col"><img src="assets/marca/menta.png" alt="">Menta</th><th scope="col"><img src="assets/marca/frutas-vermelhas.png" alt="">Frutas Vermelhas</th><th scope="col"><img src="assets/marca/citrus.png" alt="">Citrus</th><th scope="col"><img src="assets/marca/melancia.png" alt="">Melancia c/ Limão</th></tr></thead><tbody><tr><th scope="row">Azedinho</th><td><span class="taste-dots" role="img" aria-label="1 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="2 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td></tr><tr><th scope="row">Doçura</th><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="4 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td></tr><tr><th scope="row">Fresh</th><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td><td><span class="taste-dots" role="img" aria-label="1 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="4 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span></span></td></tr></tbody></table>
+      <table><thead><tr><th scope="col">Perfil</th><th scope="col"><img src="assets/marca/menta.webp" alt="" width="160" height="121" loading="lazy" decoding="async">Menta</th><th scope="col"><img src="assets/marca/frutas-vermelhas.webp" alt="" width="160" height="152" loading="lazy" decoding="async">Frutas Vermelhas</th><th scope="col"><img src="assets/marca/citrus.webp" alt="" width="160" height="152" loading="lazy" decoding="async">Citrus</th><th scope="col"><img src="assets/marca/melancia.webp" alt="" width="160" height="144" loading="lazy" decoding="async">Melancia c/ Limão</th></tr></thead><tbody><tr><th scope="row">Azedinho</th><td><span class="taste-dots" role="img" aria-label="1 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="2 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td></tr><tr><th scope="row">Doçura</th><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="4 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td></tr><tr><th scope="row">Fresh</th><td><span class="taste-dots" role="img" aria-label="5 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span></span></td><td><span class="taste-dots" role="img" aria-label="1 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="3 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span><span class="taste-dot"></span></span></td><td><span class="taste-dots" role="img" aria-label="4 de 5"><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot is-filled"></span><span class="taste-dot"></span></span></td></tr></tbody></table>
     </div>
     <p class="taste-legend">Intensidade de 1 a 5</p>
       </div>
@@ -741,7 +739,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="kb-offer">
         <label class="offer opt--locked">
           <input type="radio" name="oferta" value="kit-mousepad" checked>
-          <span class="offer-art"><img src="assets/seletor/oferta-kit.jpg" alt="4 pouches DOT + 9 sachês Melancia c/ Limão grátis (de R$ 40,00) + mousepad DOT grátis (de R$ 35,00)"></span>
+          <span class="offer-art"><img src="assets/seletor/oferta-kit.webp" alt="4 pouches DOT + 9 sachês Melancia c/ Limão grátis (de R$ 40,00) + mousepad DOT grátis (de R$ 35,00)" width="1400" height="600" loading="lazy" decoding="async"></span>
         </label>
       </div>
 
@@ -750,40 +748,40 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
         <span class="kb-num" aria-hidden="true">1</span>
         <div class="kb-panel">
           <div class="kb-head">
-            <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><img src="assets/marca/menta.png" alt="" draggable="false"><img src="assets/marca/citrus.png" alt="" draggable="false"><img src="assets/marca/frutas-vermelhas.png" alt="" draggable="false"><img src="assets/marca/melancia.png" alt="" draggable="false"></span></h3>
+            <h3 class="kb-todo">Escolha 1 sabor<span class="kb-dot" id="kb-flavor-dot" aria-hidden="true"><img src="assets/marca/menta.webp" alt="" draggable="false" width="160" height="121" loading="lazy" decoding="async"><img src="assets/marca/citrus.webp" alt="" draggable="false" width="160" height="152" loading="lazy" decoding="async"><img src="assets/marca/frutas-vermelhas.webp" alt="" draggable="false" width="160" height="152" loading="lazy" decoding="async"><img src="assets/marca/melancia.webp" alt="" draggable="false" width="160" height="144" loading="lazy" decoding="async"></span></h3>
           </div>
           <div class="flv-grid" role="radiogroup" aria-label="Sabor do pouch">
             <label class="flv">
               <input type="radio" name="sabor" value="menta" data-name="Menta">
               <span class="flv-art">
-                <img src="assets/seletor/sabor-menta.jpg" alt="Pouch DOT Menta" draggable="false">
+                <img src="assets/seletor/sabor-menta.webp" alt="Pouch DOT Menta" draggable="false" width="600" height="750" loading="lazy" decoding="async">
                 <span class="flv-name">Menta</span>
               </span>
-              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/menta.png" alt="" draggable="false"></span>
+              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/menta.webp" alt="" draggable="false" width="160" height="121" loading="lazy" decoding="async"></span>
             </label>
             <label class="flv">
               <input type="radio" name="sabor" value="citrus" data-name="Citrus">
               <span class="flv-art">
-                <img src="assets/seletor/sabor-citrus.jpg" alt="Pouch DOT Citrus" draggable="false">
+                <img src="assets/seletor/sabor-citrus.webp" alt="Pouch DOT Citrus" draggable="false" width="600" height="750" loading="lazy" decoding="async">
                 <span class="flv-name">Citrus</span>
               </span>
-              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/citrus.png" alt="" draggable="false"></span>
+              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/citrus.webp" alt="" draggable="false" width="160" height="152" loading="lazy" decoding="async"></span>
             </label>
             <label class="flv">
               <input type="radio" name="sabor" value="frutas-vermelhas" data-name="Frutas Vermelhas">
               <span class="flv-art">
-                <img src="assets/seletor/sabor-frutas-vermelhas.jpg" alt="Pouch DOT Frutas Vermelhas" draggable="false">
+                <img src="assets/seletor/sabor-frutas-vermelhas.webp" alt="Pouch DOT Frutas Vermelhas" draggable="false" width="600" height="750" loading="lazy" decoding="async">
                 <span class="flv-name">Frutas Vermelhas</span>
               </span>
-              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/frutas-vermelhas.png" alt="" draggable="false"></span>
+              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/frutas-vermelhas.webp" alt="" draggable="false" width="160" height="152" loading="lazy" decoding="async"></span>
             </label>
             <label class="flv">
               <input type="radio" name="sabor" value="melancia" data-name="Melancia c/ Limão">
               <span class="flv-art">
-                <img src="assets/seletor/sabor-melancia.jpg" alt="Pouch DOT Melancia c/ Limão" draggable="false">
+                <img src="assets/seletor/sabor-melancia.webp" alt="Pouch DOT Melancia c/ Limão" draggable="false" width="600" height="750" loading="lazy" decoding="async">
                 <span class="flv-name">Melancia c/ Limão</span>
               </span>
-              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/melancia.png" alt="" draggable="false"></span>
+              <span class="flv-check flv-check--flavor" aria-hidden="true"><img src="assets/marca/melancia.webp" alt="" draggable="false" width="160" height="144" loading="lazy" decoding="async"></span>
             </label>
           </div>
         </div>
@@ -801,7 +799,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
             <label class="flv flv--static opt--locked is-picked">
               <input type="checkbox" name="brinde" value="saches-melancia" checked>
               <span class="flv-art">
-                <img src="assets/seletor/brinde-saches.jpg" alt="9 sachês DOT Melancia c/ Limão grátis">
+                <img src="assets/seletor/brinde-saches.webp" alt="9 sachês DOT Melancia c/ Limão grátis" width="640" height="800" loading="lazy" decoding="async">
                 <span class="flv-name">9 sachês Melancia c/ Limão</span>
               </span>
               <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
@@ -809,7 +807,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
             <label class="flv flv--static opt--locked is-picked">
               <input type="checkbox" name="brinde" value="mousepad" checked>
               <span class="flv-art">
-                <img src="assets/seletor/brinde-mousepad.jpg" alt="Mousepad DOT grátis">
+                <img src="assets/seletor/brinde-mousepad.webp" alt="Mousepad DOT grátis" width="640" height="800" loading="lazy" decoding="async">
                 <span class="flv-name">Mousepad DOT</span>
               </span>
               <span class="flv-check"><svg><use href="#ic-check"/></svg></span>
@@ -822,7 +820,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="kb-cta">
         <p class="kb-summary">Seu kit: <b>1 Pouch <span id="kb-flavor">do sabor escolhido</span></b> + 9 sachês Melancia c/ Limão + Mousepad</p>
         <p class="kb-total"><b>R$ 162,49</b><s>R$ 237,49</s></p>
-        <a class="kb-buy" id="kb-buy" href="#passo-sabor"><img class="kb-buy-cart" src="assets/carrinho/icone-carrinho.png" alt="" aria-hidden="true"><span id="kb-buy-label">Escolha 1 sabor</span></a>
+        <a class="kb-buy" id="kb-buy" href="#passo-sabor"><img class="kb-buy-cart" src="assets/carrinho/icone-carrinho.png" alt="" aria-hidden="true" width="150" height="128" decoding="async"><span id="kb-buy-label">Escolha 1 sabor</span></a>
         <p class="kb-warn" id="kb-warn" hidden>Escolha 1 sabor para continuar</p>
       </div>
     </div>
@@ -843,10 +841,10 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
       <div class="cart-add-zone" id="cart-add-zone">
         <div class="cart-picker" id="cart-picker" hidden>
           <div class="cart-picker-bar">
-            <button class="cart-picker-item" type="button" data-flavor="menta" aria-label="Adicionar Menta"><img src="assets/carrinho/icone-menta.png" alt=""><span aria-hidden="true">Menta</span></button>
-            <button class="cart-picker-item" type="button" data-flavor="frutas-vermelhas" aria-label="Adicionar Frutas Vermelhas"><img src="assets/carrinho/icone-frutas-vermelhas.png" alt=""><span aria-hidden="true">Frutas Vermelhas</span></button>
-            <button class="cart-picker-item" type="button" data-flavor="melancia" aria-label="Adicionar Melancia c/ Limão"><img src="assets/carrinho/icone-melancia.png" alt=""><span aria-hidden="true">Melancia c/&nbsp;Limão</span></button>
-            <button class="cart-picker-item" type="button" data-flavor="citrus" aria-label="Adicionar Citrus"><img src="assets/carrinho/icone-citrus.png" alt=""><span aria-hidden="true">Citrus</span></button>
+            <button class="cart-picker-item" type="button" data-flavor="menta" aria-label="Adicionar Menta"><img src="assets/carrinho/icone-menta.png" alt="" width="120" height="91" decoding="async"><span aria-hidden="true">Menta</span></button>
+            <button class="cart-picker-item" type="button" data-flavor="frutas-vermelhas" aria-label="Adicionar Frutas Vermelhas"><img src="assets/carrinho/icone-frutas-vermelhas.png" alt="" width="120" height="114" decoding="async"><span aria-hidden="true">Frutas Vermelhas</span></button>
+            <button class="cart-picker-item" type="button" data-flavor="melancia" aria-label="Adicionar Melancia c/ Limão"><img src="assets/carrinho/icone-melancia.png" alt="" width="120" height="108" decoding="async"><span aria-hidden="true">Melancia c/&nbsp;Limão</span></button>
+            <button class="cart-picker-item" type="button" data-flavor="citrus" aria-label="Adicionar Citrus"><img src="assets/carrinho/icone-citrus.png" alt="" width="120" height="114" decoding="async"><span aria-hidden="true">Citrus</span></button>
           </div>
         </div>
         <button class="cart-add" id="cart-add" type="button" aria-label="Adicionar outro sabor" aria-expanded="false" aria-controls="cart-picker">
@@ -872,7 +870,7 @@ html:has(.nutrition-dialog[open]) { overflow: hidden; }
     <h2 class="t-h2" id="nutrition-title">Tabela nutricional</h2>
     <button class="nutrition-close" type="button" aria-label="Fechar tabela nutricional" autofocus><svg aria-hidden="true"><use href="#ic-plus"/></svg></button>
   </div>
-  <img class="nutrition-image" src="assets/marca/tabela-nutricional.webp" alt="Informação nutricional DOT: 25 porções por embalagem; porção de 3,2 g ou 1 sachê. Valores por sachê e por 6,4 g, com percentuais dos valores diários." width="747" height="589">
+  <img class="nutrition-image" src="assets/marca/tabela-nutricional.webp" alt="Informação nutricional DOT: 25 porções por embalagem; porção de 3,2 g ou 1 sachê. Valores por sachê e por 6,4 g, com percentuais dos valores diários." width="747" height="589" loading="lazy" decoding="async">
 </dialog>
 
 <script>
@@ -1103,6 +1101,8 @@ document.querySelectorAll('.ben-trigger').forEach((btn) => {
     const pic = el('img');
     pic.src = img;
     pic.alt = '';
+    pic.width = pic.height = img.includes('/pouch-') ? 200 : 160;
+    pic.decoding = 'async';
     thumb.append(pic);
     const info = el('span', 'cart-info');
     const priceRow = el('span', `cart-price${free ? ' is-free' : ''}`);
